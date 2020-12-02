@@ -11,20 +11,22 @@ export const breakpoints = {
 export const colors = {
   white: 'hsl(0, 0%, 100%)',
   black: 'hsl(0, 0%, 0%)',
-  grey100: 'hsl(0, 0%, 35%)',
-  grey200: 'hsl(0, 0%, 74%)',
-  grey300: 'hsl(0, 0%, 87%)',
-  grey400: 'hsl(0, 0%, 91%)',
-  grey500: 'hsl(0, 0%, 97%)',
-  primary: '#FFD226',
+  primary: 'hsl(0, 24%, 74%)',
+  borders: 'hsl(0, 100%, 95%)',
 };
 
 export const font = {
   size: {
-    header: '4.5rem',
-    paragraph: '1.7rem',
-    button: '1.5rem',
+    header: '4.8rem',
+    nav: '2.2rem',
+    maslow: '3rem',
+    maslowSml: '1.4rem',
+    paragraph: '1.8rem',
   },
+  weight: {
+    regular: 400,
+    bold: 700,
+  }
 };
 
 export const mq = Object.keys(breakpoints).reduce((acc, breakpoint) => {

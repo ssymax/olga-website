@@ -2,6 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 import 'vendors/normalize.css';
 
 const GlobalStyle = createGlobalStyle`
+
+@import url('https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
   html {
     box-sizing: border-box;
     font-size: 62.5%;
@@ -18,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
     font-size: 1.6rem;
+    font-family: 'Caladea', serif;
   }
   
   h1, h2, h3, h4, h5, span {
@@ -27,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
   button {
     padding: 0;
     cursor: pointer;
+    font-family: 'Caladea', serif;
   }
   
   ul {
