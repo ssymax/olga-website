@@ -18,7 +18,6 @@ export const colors = {
 export const font = {
   size: {
     header: '4.8rem',
-    nav: '2.2rem',
     maslow: '3rem',
     maslowSml: '1.4rem',
     paragraph: '1.8rem',
@@ -30,7 +29,7 @@ export const font = {
 };
 
 export const mq = Object.keys(breakpoints).reduce((acc, breakpoint) => {
-  acc[breakpoint] = `@media (min-width: ${breakpoints[breakpoint]}px)`;
+  acc[breakpoint] = `@media (max-width: ${breakpoints[breakpoint]}px)`;
   return acc;
 }, {});
 

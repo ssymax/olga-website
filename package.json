@@ -28,6 +28,7 @@
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-source-filesystem": "^2.3.23",
     "gatsby-transformer-sharp": "^2.5.12",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -74,7 +75,7 @@
     "stylelint-webpack-plugin": "^2.1.0"
   },
   "keywords": [
-    "ssyamx"
+    "ssymax"
   ],
   "license": "MIT",
   "husky": {
