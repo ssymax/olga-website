@@ -12,6 +12,7 @@ export const colors = {
   white: 'hsl(0, 0%, 100%)',
   black: 'hsl(0, 0%, 0%)',
   primary: 'hsl(0, 24%, 74%)',
+  opacity: 'hsl(0, 24%, 74%, 75%)',
   borders: 'hsl(0, 100%, 95%)',
 };
 
@@ -25,17 +26,23 @@ export const font = {
   weight: {
     regular: 400,
     bold: 700,
-  }
+  },
 };
 
-export const mq = Object.keys(breakpoints).reduce((acc, breakpoint) => {
+export const mqx = Object.keys(breakpoints).reduce((acc, breakpoint) => {
   acc[breakpoint] = `@media (max-width: ${breakpoints[breakpoint]}px)`;
+  return acc;
+}, {});
+
+export const mqn = Object.keys(breakpoints).reduce((acc, breakpoint) => {
+  acc[breakpoint] = `@media (min-width: ${breakpoints[breakpoint]}px)`;
   return acc;
 }, {});
 
 export const theme = {
   ...colors,
-  mq,
+  mqx,
+  mqn,
   font,
   layout: {
     searchBarHeight: '80px',

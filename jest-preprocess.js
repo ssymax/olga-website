@@ -1,5 +1,8 @@
 const babelOptions = {
-  plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-proposal-export-default-from'],
+  plugins: [
+    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-proposal-export-default-from',
+  ],
   presets: [
     [
       'babel-preset-gatsby',

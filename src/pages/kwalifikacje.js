@@ -1,9 +1,10 @@
 import React from 'react';
+import PageTemplate from '../components/templates/PageTemplate/PageTemplate';
 
 const EducationPage = () => (
-  <div>
-    <h1>kwalifikacje</h1>
-  </div>
+  <PageTemplate>
+    <p>hello kolo</p>
+  </PageTemplate>
 );
 
 export default EducationPage;

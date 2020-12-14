@@ -1,9 +1,12 @@
 import React from 'react';
+import PageTemplate from '../components/templates/PageTemplate/PageTemplate';
 
-const ConsultationPage = () => (
-  <div>
-    <h1>konsultacje</h1>
-  </div>
-);
+const ConsultationPage = () => {
+  return (
+    <PageTemplate>
+      <p>hello kolo</p>
+    </PageTemplate>
+  );
+};
 
 export default ConsultationPage;

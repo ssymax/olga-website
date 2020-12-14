@@ -3,9 +3,20 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 const StyledLogo = styled.svg`
-  width: 250px;
   height: 75px;
   margin-left: 100px;
+  ${({ theme }) => theme.mqx.tablet} {
+    margin-left: 40px;
+    height: 50px;
+  }
+  ${({ theme }) => theme.mqx.bigPhone} {
+    margin-left: 20px;
+    height: 50px;
+  }
+  ${({ theme }) => theme.mqx.phone} {
+    margin-left: 20px;
+    height: 30px;
+  }
 `;
 
 const Logo = () => (

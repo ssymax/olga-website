@@ -9,6 +9,7 @@ module.exports = {
     window: true,
     document: true,
     localStorage: true,
+    location: true,
   },
   rules: {
     'import/no-absolute-path': 0,
@@ -28,7 +29,7 @@ module.exports = {
     'react/jsx-max-props-per-line': [
       1,
       {
-        maximum: 3,
+        maximum: 4,
       },
     ],
     'react/jsx-filename-extension': [
