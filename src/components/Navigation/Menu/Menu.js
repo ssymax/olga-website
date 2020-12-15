@@ -12,6 +12,7 @@ const StyledNavWrapper = styled.nav`
   margin-left: 0;
   ${({ theme }) => theme.mqx.tablet} {
     padding-right: 20px;
+    padding-top: 20px;
     position: absolute;
     text-align: right;
     justify-content: flex-end;

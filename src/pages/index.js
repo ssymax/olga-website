@@ -13,6 +13,8 @@ const StyledWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
+  @media (max-height: 800px) {
+  }
 `;
 
 const StyledImageWrapper = styled(Img)`

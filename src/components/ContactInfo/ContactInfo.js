@@ -1,39 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
-import { ReactComponent as HomeIcon } from '../../assets/images/svg/homeIcon.svg';
-import { ReactComponent as PhoneIcon } from '../../assets/images/svg/phoneIcon.svg';
-import { ReactComponent as EmailIcon } from '../../assets/images/svg/emailIcon.svg';
-
-const StyledSpanText = styled.span`
-  font-size: ${({ theme }) => theme.font.size.paragraph};
-  text-align: center;
-  line-height: 130%;
-  letter-spacing: 2px;
-  text-decoration: none;
-  color: ${({ theme }) => theme.black};
-`;
-
-const phoneNumber = 'tel:+48508200455';
-const email = `mailto:olga.lukasikk@gmail.com`;
+import SmallContactBoxIcon from '../ContactPage/ContactBoxIcon/SmallContactBoxIcon';
+import SpanText from './SpanText';
+import homeIcon from '../../assets/images/svg/homeIcon.svg';
+import phoneIcon from '../../assets/images/svg/phoneIcon.svg';
+import emailIcon from '../../assets/images/svg/emailIcon.svg';
+import { contactData } from '../../utils';
 
 const ContactInfo = () => (
   <>
-    <HomeIcon />
-    <StyledSpanText>
-      ul. Michała Kajki 5, pokój 16
+    <SmallContactBoxIcon icon={homeIcon} />
+    <SpanText>
+      {contactData.address.street}
       <br />
-      11-041 Olsztyn
-    </StyledSpanText>
+      {contactData.address.city}
+    </SpanText>
 
-    <PhoneIcon />
-    <StyledSpanText as="a" href={phoneNumber}>
-      508-200-455
-    </StyledSpanText>
+    <SmallContactBoxIcon icon={phoneIcon} />
+    <SpanText as="a" href={contactData.phoneHref}>
+      {contactData.phone}
+    </SpanText>
 
-    <EmailIcon />
-    <StyledSpanText as="a" href={email}>
-      olga.lukasikk@gmail.com
-    </StyledSpanText>
+    <SmallContactBoxIcon icon={emailIcon} />
+    <SpanText as="a" href={contactData.emailHref}>
+      {contactData.email}
+    </SpanText>
   </>
 );
 
