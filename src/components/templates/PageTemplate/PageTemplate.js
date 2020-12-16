@@ -32,6 +32,12 @@ const StyledPageHeader = styled.div`
   letter-spacing: 5px;
   border: 2px solid ${({ theme }) => theme.borders};
 
+  ${({ theme }) => theme.mqx.tablet} {
+    font-size: ${({ theme }) => theme.font.size.maslow};
+    padding: 0 10px;
+    transform: translate(-50%, 25px);
+  }
+
   ${({ contact }) =>
     contact &&
     css`

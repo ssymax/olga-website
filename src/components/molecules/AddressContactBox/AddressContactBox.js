@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactBox from '../ContactBox/ContactBox';
-import ContactBoxIcon from '../ContactBoxIcon/ContactBoxIcon';
-import addressIcon from '../../../assets/images/svg/addressIcon.svg';
-import ContactInfo from '../../ContactInfo/ContactInfo';
+import ContactBox from 'components/atoms/ContactBox/ContactBox';
+import ContactBoxIcon from 'components/atoms/ContactBoxIcon/ContactBoxIcon';
+import addressIcon from 'assets/images/svg/addressIcon.svg';
+import ContactInfo from 'components/molecules/ContactInfo/ContactInfo';
 
 const StyledInnerWrapper = styled.div`
   padding: 50px 0;

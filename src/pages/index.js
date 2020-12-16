@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import Quote from '../components/MainPage/Quote';
+import Quote from 'components/atoms/Quote/Quote';
 
 const StyledWrapper = styled.div`
   margin: 40px auto;

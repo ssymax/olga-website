@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Logo from './Logo/Logo';
-import Menu from './Menu/Menu';
-import Burger from './Burger/Burger';
-import { MobileNavContext } from '../../context';
+import Logo from 'components/atoms/Logo/Logo';
+import Menu from 'components/molecules/Menu/Menu';
+import Burger from 'components/atoms/Burger/Burger';
+import { MobileNavContext } from 'context';
 
 const StyledWrapper = styled.div`
   margin: auto;

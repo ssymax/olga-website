@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import SpanText from '../ContactInfo/SpanText';
-import SmallContactBoxIcon from '../ContactPage/ContactBoxIcon/SmallContactBoxIcon';
-import homeIcon from '../../assets/images/svg/homeIcon.svg';
-import phoneIcon from '../../assets/images/svg/phoneIcon.svg';
-import emailIcon from '../../assets/images/svg/emailIcon.svg';
-import { contactData } from '../../utils';
+import SpanText from 'components/atoms/SpanText/SpanText';
+import SmallContactBoxIcon from 'components/atoms/SmallContactBoxIcon/SmallContactBoxIcon';
+import homeIcon from 'assets/images/svg/homeIcon.svg';
+import phoneIcon from 'assets/images/svg/phoneIcon.svg';
+import emailIcon from 'assets/images/svg/emailIcon.svg';
+import { contactData } from 'utils';
 
 const StyledFooterWrapper = styled.div`
   margin: auto;
@@ -30,6 +30,7 @@ const StyledInnerWrapper = styled.div`
   width: 280px;
   text-decoration: none;
   border-bottom: 2px solid ${({ theme }) => theme.primary};
+
   ${({ theme }) => theme.mqx.tablet} {
     margin-top: 20px;
   }

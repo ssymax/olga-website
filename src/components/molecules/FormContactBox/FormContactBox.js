@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactBox from '../ContactBox/ContactBox';
-import ContactBoxIcon from '../ContactBoxIcon/ContactBoxIcon';
-import mailIcon from '../../../assets/images/svg/mailIcon.svg';
+import ContactBox from 'components/atoms/ContactBox/ContactBox';
+import ContactBoxIcon from 'components/atoms/ContactBoxIcon/ContactBoxIcon';
+import mailIcon from 'assets/images/svg/mailIcon.svg';
 
 const StyledForm = styled.form`
   padding: 40px 0;

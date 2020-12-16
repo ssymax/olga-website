@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactBox from '../ContactBox/ContactBox';
-import ContactBoxIcon from '../ContactBoxIcon/ContactBoxIcon';
-import locationIcon from '../../../assets/images/svg/locationIcon.svg';
+import ContactBox from 'components/atoms/ContactBox/ContactBox';
+import ContactBoxIcon from 'components/atoms/ContactBoxIcon/ContactBoxIcon';
+import locationIcon from 'assets/images/svg/locationIcon.svg';
 
 const StyledMapContainer = styled.div`
   width: 100%;

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { MobileNavContext } from '../../../context';
+import { MobileNavContext } from 'context';
 
 const StyledBurger = styled.div`
   display: none;

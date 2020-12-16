@@ -1,10 +1,10 @@
 import React from 'react';
-import SmallContactBoxIcon from '../ContactPage/ContactBoxIcon/SmallContactBoxIcon';
-import SpanText from './SpanText';
-import homeIcon from '../../assets/images/svg/homeIcon.svg';
-import phoneIcon from '../../assets/images/svg/phoneIcon.svg';
-import emailIcon from '../../assets/images/svg/emailIcon.svg';
-import { contactData } from '../../utils';
+import SmallContactBoxIcon from 'components/atoms/SmallContactBoxIcon/SmallContactBoxIcon';
+import SpanText from 'components/atoms/SpanText/SpanText';
+import homeIcon from 'assets/images/svg/homeIcon.svg';
+import phoneIcon from 'assets/images/svg/phoneIcon.svg';
+import emailIcon from 'assets/images/svg/emailIcon.svg';
+import { contactData } from 'utils';
 
 const ContactInfo = () => (
   <>

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { MobileNavContext } from '../../../context';
+import { MobileNavContext } from 'context';
+import { routes } from 'routes';
 
 const StyledNavWrapper = styled.nav`
   margin-right: 100px;
@@ -63,27 +64,27 @@ const Menu = () => {
     <StyledNavWrapper open={isOpen}>
       <StyledLinkList>
         <StyledItem>
-          <StyledLink to="/o-mnie" activeClassName="active">
+          <StyledLink to={routes.about} activeClassName="active">
             o mnie
           </StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink to="/kwalifikacje" activeClassName="active">
+          <StyledLink to={routes.qualifications} activeClassName="active">
             kwalifikacje
           </StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink to="/konsultacje" activeClassName="active">
+          <StyledLink to={routes.consultations} activeClassName="active">
             konsultacje
           </StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink to="/cennik" activeClassName="active">
+          <StyledLink to={routes.PriceList} activeClassName="active">
             cennik
           </StyledLink>
         </StyledItem>
         <StyledItem>
-          <StyledLink to="/kontakt" activeClassName="active">
+          <StyledLink to={routes.contact} activeClassName="active">
             kontakt
           </StyledLink>
         </StyledItem>

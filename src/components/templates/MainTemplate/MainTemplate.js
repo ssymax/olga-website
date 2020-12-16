@@ -1,10 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../../../assets/styles/GlobalStyle';
-import { theme } from '../../../assets/styles/theme';
-import Navigation from '../../Navigation/Navigation';
-import Footer from '../../Footer/Footer';
+import GlobalStyle from 'assets/styles/GlobalStyle';
+import { theme } from 'assets/styles/theme';
+import Navigation from 'components/organisms/Navigation/Navigation';
+import Footer from 'components/organisms/Footer/Footer';
 
 const MainTemplate = ({ children }) => {
   return (
