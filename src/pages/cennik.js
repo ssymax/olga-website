@@ -1,10 +1,14 @@
 import React from 'react';
-import PageTemplate from '../components/templates/PageTemplate/PageTemplate';
+import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
+import PageHeader from 'components/atoms/PageHeader/PageHeader';
 
 const PriceListPage = () => (
-  <PageTemplate>
-    <p>hello kolo</p>
-  </PageTemplate>
+  <>
+    <PageHeader>cennik</PageHeader>
+    <PageWrapper>
+      <p>hello kolo</p>
+    </PageWrapper>
+  </>
 );
 
 export default PriceListPage;

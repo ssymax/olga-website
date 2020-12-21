@@ -1,10 +1,14 @@
 import React from 'react';
-import PageTemplate from '../components/templates/PageTemplate/PageTemplate';
+import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
+import PageHeader from 'components/atoms/PageHeader/PageHeader';
 
 const EducationPage = () => (
-  <PageTemplate>
-    <p>hello kolo</p>
-  </PageTemplate>
+  <>
+    <PageHeader>kwalifikacje</PageHeader>
+    <PageWrapper>
+      <p>hello simon</p>
+    </PageWrapper>
+  </>
 );
 
 export default EducationPage;

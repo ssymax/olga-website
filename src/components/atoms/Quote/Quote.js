@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
 
 const StyledQuotationWrapper = styled.div`
   position: absolute;
@@ -78,11 +79,20 @@ i trudne osiągnięcie...”`;
 
 const author = `a. maslow`;
 
-const Quote = () => (
-  <StyledQuotationWrapper>
-    <Quotation>{text}</Quotation>
-    <AuthorWrapper>{author.toUpperCase()}</AuthorWrapper>
-  </StyledQuotationWrapper>
-);
+const Quote = () => {
+  const quoteRef = useRef(null);
+
+  useEffect(() => {
+    const quote = quoteRef.current;
+    const tl = gsap.timeline();
+    tl.fromTo(quote, { autoAlpha: 0 }, { duration: 1, autoAlpha: 1, ease: 'easeInOut' }).delay(5);
+  }, []);
+  return (
+    <StyledQuotationWrapper ref={quoteRef}>
+      <Quotation>{text}</Quotation>
+      <AuthorWrapper>{author.toUpperCase()}</AuthorWrapper>
+    </StyledQuotationWrapper>
+  );
+};
 
 export default Quote;

@@ -1,11 +1,15 @@
 import React from 'react';
-import PageTemplate from '../components/templates/PageTemplate/PageTemplate';
+import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
+import PageHeader from 'components/atoms/PageHeader/PageHeader';
 
 const ConsultationPage = () => {
   return (
-    <PageTemplate>
-      <p>hello kolo</p>
-    </PageTemplate>
+    <>
+      <PageHeader>konsultacje</PageHeader>
+      <PageWrapper>
+        <p>hello simon</p>
+      </PageWrapper>
+    </>
   );
 };
 

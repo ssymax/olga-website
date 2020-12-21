@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import PageTemplate from 'components/templates/PageTemplate/PageTemplate';
+import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
+import PageHeader from 'components/atoms/PageHeader/PageHeader';
 import FormContactBox from 'components/molecules/FormContactBox/FormContactBox';
 import AddressContactBox from 'components/molecules/AddressContactBox/AddressContactBox';
 import LocationContactBox from 'components/molecules/LocationContactBox/LocationContactBox';
@@ -17,13 +18,16 @@ const StyledBoxesWrapper = styled.div`
 `;
 
 const ContactPage = () => (
-  <PageTemplate>
-    <StyledBoxesWrapper>
-      <FormContactBox />
-      <AddressContactBox />
-      <LocationContactBox />
-    </StyledBoxesWrapper>
-  </PageTemplate>
+  <>
+    <PageHeader contact>kontakt</PageHeader>
+    <PageWrapper contact>
+      <StyledBoxesWrapper>
+        <FormContactBox />
+        <AddressContactBox />
+        <LocationContactBox />
+      </StyledBoxesWrapper>
+    </PageWrapper>
+  </>
 );
 
 export default ContactPage;

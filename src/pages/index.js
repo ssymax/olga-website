@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
+import gsap from 'gsap';
 import Img from 'gatsby-image';
 import Quote from 'components/atoms/Quote/Quote';
 
@@ -13,8 +14,6 @@ const StyledWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
-  @media (max-height: 800px) {
-  }
 `;
 
 const StyledImageWrapper = styled(Img)`
@@ -28,6 +27,14 @@ const IndexPage = ({ data }) => {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 767;
 
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const img = imgRef.current;
+    const tl3 = gsap.timeline();
+    tl3.fromTo(img, { autoAlpha: 0, scale: 1.2 }, { duration: 5, autoAlpha: 1, scale: 1 }).delay(1);
+  }, []);
+
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -35,7 +42,7 @@ const IndexPage = ({ data }) => {
   }, []);
 
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={imgRef}>
       {width < breakpoint ? (
         <StyledImageWrapper fixed={data.file.childImageSharp.fixed} />
       ) : (

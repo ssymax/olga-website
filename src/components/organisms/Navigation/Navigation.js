@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
 import Logo from 'components/atoms/Logo/Logo';
 import Menu from 'components/molecules/Menu/Menu';
 import Burger from 'components/atoms/Burger/Burger';
@@ -14,7 +15,6 @@ const StyledWrapper = styled.div`
     inset 0 0 0 7px ${({ theme }) => theme.borders};
   justify-content: space-between;
   align-items: center;
-  z-index: ${({ theme }) => theme.zIndex.level7};
 
   ${({ theme }) => theme.mqx.tablet} {
     height: 100px;
@@ -28,15 +28,22 @@ const StyledWrapper = styled.div`
 const Navigation = () => {
   const [isOpen, setOpen] = useState(false);
   const handleOpen = () => setOpen(!isOpen);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    const tl1 = gsap.timeline();
+    tl1.fromTo(nav, { autoAlpha: 0 }, { duration: 1, autoAlpha: 1 });
+  }, []);
 
   return (
-    <StyledWrapper>
-      <MobileNavContext.Provider value={{ isOpen, handleOpen }}>
+    <MobileNavContext.Provider value={{ isOpen, handleOpen }}>
+      <StyledWrapper ref={navRef}>
         <Logo />
         <Burger />
         <Menu />
-      </MobileNavContext.Provider>
-    </StyledWrapper>
+      </StyledWrapper>
+    </MobileNavContext.Provider>
   );
 };
 

@@ -14,10 +14,16 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     'gatsby-plugin-svgr',
+    // {
+    //   resolve: 'gatsby-plugin-layout',
+    //   options: {
+    //     component: require.resolve('./src/components/templates/MainTemplate/MainTemplate.js'),
+    //   },
+    // },
     {
-      resolve: 'gatsby-plugin-layout',
+      resolve: 'gatsby-plugin-transition-link',
       options: {
-        component: require.resolve('./src/components/templates/MainTemplate/MainTemplate.js'),
+        layout: require.resolve('./src/components/templates/MainTemplate/MainTemplate.js'),
       },
     },
     {
