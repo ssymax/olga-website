@@ -10,7 +10,6 @@ const PageHeader = styled.div`
   background-color: ${({ theme }) => theme.white};
   text-transform: uppercase;
   letter-spacing: 5px;
-  border: 2px solid ${({ theme }) => theme.borders};
 
   ${({ theme }) => theme.mqx.tablet} {
     font-size: ${({ theme }) => theme.font.size.maslow};

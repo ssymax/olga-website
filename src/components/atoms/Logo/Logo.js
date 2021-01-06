@@ -7,6 +7,11 @@ import gsap from 'gsap';
 const StyledLogo = styled.svg`
   height: 75px;
   margin-left: 100px;
+
+  ${({ theme }) => theme.mqx.desktop} {
+    margin-left: 60px;
+  }
+
   ${({ theme }) => theme.mqx.tablet} {
     margin-left: 40px;
     height: 50px;
@@ -16,7 +21,6 @@ const StyledLogo = styled.svg`
     height: 50px;
   }
   ${({ theme }) => theme.mqx.phone} {
-    margin-left: 20px;
     height: 30px;
   }
 

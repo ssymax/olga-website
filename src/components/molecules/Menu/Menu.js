@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
+import TransitionLink from 'gatsby-plugin-transition-link';
 import styled from 'styled-components';
 import gsap from 'gsap';
 import { MobileNavContext } from 'context';
@@ -13,6 +13,10 @@ const StyledNavWrapper = styled.nav`
   justify-content: flex-start;
   margin-left: 0;
   ${({ theme }) => theme.zIndex.level8};
+
+  ${({ theme }) => theme.mqx.desktop} {
+    margin-right: 60px;
+  }
 
   ${({ theme }) => theme.mqx.tablet} {
     display: flex;
@@ -50,7 +54,7 @@ const StyledItem = styled.li`
   z-index: inherit;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(TransitionLink)`
   display: block;
   text-decoration: none;
   color: ${({ theme }) => theme.primary};
@@ -68,20 +72,21 @@ const StyledLink = styled(Link)`
 const Menu = () => {
   const { isOpen, handleOpen } = useContext(MobileNavContext);
 
-  const aboutRef = useRef(null);
-  const qualiRef = useRef(null);
-  const consultRef = useRef(null);
-  const priceRef = useRef(null);
-  const contactRef = useRef(null);
+  const pageTransition = ({ node, exit }) => {
+    const tl = gsap.timeline();
+    const duration = exit.length;
+    tl.fromTo(
+      node,
+      { autoAlpha: 1, scale: 1 },
+      { duration, autoAlpha: 0, scale: 0.9, transformOrigin: 'center 0' }
+    );
+    return tl.play();
+  };
+
+  const menuRef = useRef(null);
 
   useEffect(() => {
-    const menu = [
-      aboutRef.current,
-      qualiRef.current,
-      consultRef.current,
-      priceRef.current,
-      contactRef.current,
-    ];
+    const menu = Array.from(menuRef.current.children);
 
     const tl = gsap.timeline();
     menu.forEach((menuItem) =>
@@ -97,29 +102,61 @@ const Menu = () => {
 
   return (
     <StyledNavWrapper open={isOpen}>
-      <StyledLinkList>
-        <StyledItem ref={aboutRef}>
-          <StyledLink onClick={handleOpen} to={routes.about} activeClassName="active">
+      <StyledLinkList ref={menuRef}>
+        <StyledItem>
+          <StyledLink
+            onClick={handleOpen}
+            exit={{
+              trigger: pageTransition,
+              length: 0.5,
+            }}
+            to={routes.about}
+            activeClassName="active"
+          >
             o mnie
           </StyledLink>
         </StyledItem>
-        <StyledItem ref={qualiRef}>
+        <StyledItem>
           <StyledLink onClick={handleOpen} to={routes.qualifications} activeClassName="active">
             kwalifikacje
           </StyledLink>
         </StyledItem>
-        <StyledItem ref={consultRef}>
-          <StyledLink onClick={handleOpen} to={routes.consultations} activeClassName="active">
+        <StyledItem>
+          <StyledLink
+            onClick={handleOpen}
+            exit={{
+              trigger: pageTransition,
+              length: 0.5,
+            }}
+            to={routes.consultations}
+            activeClassName="active"
+          >
             konsultacje
           </StyledLink>
         </StyledItem>
-        <StyledItem ref={priceRef}>
-          <StyledLink onClick={handleOpen} to={routes.priceList} activeClassName="active">
+        <StyledItem>
+          <StyledLink
+            onClick={handleOpen}
+            exit={{
+              trigger: pageTransition,
+              length: 0.5,
+            }}
+            to={routes.priceList}
+            activeClassName="active"
+          >
             cennik
           </StyledLink>
         </StyledItem>
-        <StyledItem ref={contactRef}>
-          <StyledLink onClick={handleOpen} to={routes.contact} activeClassName="active">
+        <StyledItem>
+          <StyledLink
+            onClick={handleOpen}
+            exit={{
+              trigger: pageTransition,
+              length: 0.5,
+            }}
+            to={routes.contact}
+            activeClassName="active"
+          >
             kontakt
           </StyledLink>
         </StyledItem>

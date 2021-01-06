@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components';
 
 const PageWrapper = styled.div`
   position: relative;
-  max-width: 1355px;
+  justify-content: center;
+  max-width: 100%;
   margin: 40px auto 10px auto;
   height: auto;
   display: flex;

@@ -1,9 +1,9 @@
 export const routes = {
   home: '/',
   about: '/o-mnie',
-  priceList: '/cennik',
-  contact: '/kontakt',
   qualifications: '/kwalifikacje',
   consultations: '/konsultacje',
+  priceList: '/cennik',
+  contact: '/kontakt',
   404: '/404',
 };

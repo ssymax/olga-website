@@ -9,7 +9,7 @@ import { MobileNavContext } from 'context';
 const StyledWrapper = styled.div`
   margin: auto;
   display: flex;
-  max-width: 1355px;
+  width: 100%;
   height: 180px;
   box-shadow: inset 0 0 0 5px ${({ theme }) => theme.white},
     inset 0 0 0 7px ${({ theme }) => theme.borders};
@@ -28,6 +28,7 @@ const StyledWrapper = styled.div`
 const Navigation = () => {
   const [isOpen, setOpen] = useState(false);
   const handleOpen = () => setOpen(!isOpen);
+
   const navRef = useRef(null);
 
   useEffect(() => {

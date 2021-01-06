@@ -4,77 +4,90 @@ import gsap from 'gsap';
 
 const StyledQuotationWrapper = styled.div`
   position: absolute;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 1355px;
-  max-height: 50%;
+  bottom: 25.5%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  width: 100%;
+  height: auto;
   background-color: ${({ theme }) => theme.opacity};
 
+  ${({ theme }) => theme.mqx.bigDesktop} {
+    bottom: 15%;
+  }
+
   ${({ theme }) => theme.mqx.bigTablet} {
-    flex-direction: column;
+    bottom: 10%;
+    grid-template-columns: none;
+    grid-template-rows: auto auto;
   }
 `;
 
 const Quotation = styled.div`
-  width: 70%;
-  display: flex;
-  padding: 20px 30px 20px 65px;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  column-gap: 10px;
+  padding: 15px;
   justify-content: center;
-  align-items: center;
-  font-size: ${({ theme }) => theme.font.size.header};
+  margin: 0 auto;
+  font-size: 4rem;
   color: ${({ theme }) => theme.white};
   font-style: italic;
   letter-spacing: 5px;
-  text-align: justify;
+  text-align: right;
+
+  ${({ theme }) => theme.mqx.bigDesktop} {
+    font-size: 3rem;
+  }
+
+  ${({ theme }) => theme.mqx.desktop} {
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+  }
 
   ${({ theme }) => theme.mqx.bigTablet} {
-    width: 100%;
-    font-size: 3.2rem;
-    padding: 20px 30px 20px 30px;
+    row-gap: 10px;
   }
+
   ${({ theme }) => theme.mqx.tablet} {
-    text-align: left;
-    padding: 20px;
-    font-size: 2.3rem;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
   }
 
   ${({ theme }) => theme.mqx.bigPhone} {
-    padding: 10px;
-    text-align: center;
-    font-size: ${({ theme }) => theme.font.size.paragraph};
+    font-size: 1.6rem;
+    margin-bottom: 5px;
   }
 `;
 
 const AuthorWrapper = styled.div`
-  width: 25%;
-  padding: 40px 0 40px 20px;
   letter-spacing: 5px;
+  margin: 15px 0;
   color: ${({ theme }) => theme.white};
   font-size: ${({ theme }) => theme.font.size.maslow};
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   border-left: 2px solid ${({ theme }) => theme.white};
   white-space: nowrap;
 
   ${({ theme }) => theme.mqx.bigTablet} {
-    padding: 20px 0;
+    width: 80%;
+    justify-self: center;
+    font-size: 2rem;
+    margin: 0;
+    padding: 15px 0;
     border-left: none;
     border-top: 2px solid ${({ theme }) => theme.white};
-    font-size: 2rem;
   }
+
   ${({ theme }) => theme.mqx.tablet} {
-    min-width: 150px;
-    padding: 10px;
-    font-size: ${({ theme }) => theme.font.size.paragraph};
-  }
-  ${({ theme }) => theme.mqx.bigPhone} {
     font-size: ${({ theme }) => theme.font.size.maslowSml};
   }
 `;
 
-const text = `“Nie jest normą wiedzieć, czego się chce. To rzadkie
+const text = `“Nie jest normą wiedzieć, czego się chce.`;
+const text2 = `To rzadkie
 i trudne osiągnięcie...”`;
 
 const author = `a. maslow`;
@@ -85,11 +98,23 @@ const Quote = () => {
   useEffect(() => {
     const quote = quoteRef.current;
     const tl = gsap.timeline();
-    tl.fromTo(quote, { autoAlpha: 0 }, { duration: 1, autoAlpha: 1, ease: 'easeInOut' }).delay(5);
+    gsap.set([quote, quote.children], { autoAlpha: 0 });
+    tl.fromTo(
+      quote,
+      { scaleX: 0.0, scaleY: 0.05, transformOrigin: 'left 0%' },
+      { duration: 3, scaleX: 1, autoAlpha: 1, transformOrigin: 'left 100%' }
+    )
+      .to(quote, { duration: 1, scaleY: 1, transformOrigin: '0 100%', ease: 'Power4.easeOut' })
+      .to(quote.children, { autoAlpha: 1, ease: 'Power2.easeOut' })
+      .delay(1);
   }, []);
+
   return (
     <StyledQuotationWrapper ref={quoteRef}>
-      <Quotation>{text}</Quotation>
+      <Quotation>
+        <span>{text}</span>
+        <span>{text2}</span>
+      </Quotation>
       <AuthorWrapper>{author.toUpperCase()}</AuthorWrapper>
     </StyledQuotationWrapper>
   );

@@ -6,18 +6,16 @@ import Img from 'gatsby-image';
 import Quote from 'components/atoms/Quote/Quote';
 
 const StyledWrapper = styled.div`
-  margin: 40px auto;
-  max-width: 1355px;
-  height: auto;
+  margin: 0 auto 40px auto;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
 `;
 
 const StyledImageWrapper = styled(Img)`
-  position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -31,8 +29,9 @@ const IndexPage = ({ data }) => {
 
   useEffect(() => {
     const img = imgRef.current;
-    const tl3 = gsap.timeline();
-    tl3.fromTo(img, { autoAlpha: 0, scale: 1.2 }, { duration: 5, autoAlpha: 1, scale: 1 }).delay(1);
+    const tl = gsap.timeline();
+
+    tl.fromTo(img, { autoAlpha: 0, scale: 1.05 }, { duration: 5, autoAlpha: 1, scale: 1 }).delay(1);
   }, []);
 
   useEffect(() => {
@@ -42,14 +41,16 @@ const IndexPage = ({ data }) => {
   }, []);
 
   return (
-    <StyledWrapper ref={imgRef}>
-      {width < breakpoint ? (
-        <StyledImageWrapper fixed={data.file.childImageSharp.fixed} />
-      ) : (
-        <StyledImageWrapper fluid={data.file.childImageSharp.fluid} />
-      )}
-      <Quote />
-    </StyledWrapper>
+    <>
+      <StyledWrapper ref={imgRef}>
+        {width < breakpoint ? (
+          <StyledImageWrapper fixed={data.file.childImageSharp.fixed} />
+        ) : (
+          <StyledImageWrapper fluid={data.file.childImageSharp.fluid} />
+        )}
+        <Quote />
+      </StyledWrapper>
+    </>
   );
 };
 
@@ -57,14 +58,14 @@ export const query = graphql`
   {
     file(name: { eq: "olga" }) {
       childImageSharp {
-        fluid(maxWidth: 1346, quality: 100) {
+        fluid(maxWidth: 1980, quality: 100) {
           ...GatsbyImageSharpFluid_noBase64
         }
       }
     }
     file(name: { eq: "olga" }) {
       childImageSharp {
-        fixed(height: 500, quality: 100) {
+        fixed(height: 600, quality: 100) {
           ...GatsbyImageSharpFixed_noBase64
         }
       }

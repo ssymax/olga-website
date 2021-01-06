@@ -9,6 +9,7 @@ module.exports = {
     title: `Olga Łukasik Psycholog`,
     author: `Szymon Łukasik`,
   },
+  flags: { PRESERVE_WEBPACK_CACHE: true, FAST_REFRESH: true, FAST_DEV: false },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
