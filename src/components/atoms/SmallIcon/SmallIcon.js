@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const SmallContactBoxIcon = styled.div`
+const SmallIcon = styled.div`
   width: 25px;
   height: 25px;
   background-image: url(${({ icon }) => icon});
@@ -8,4 +8,4 @@ const SmallContactBoxIcon = styled.div`
   background-repeat: no-repeat;
 `;
 
-export default SmallContactBoxIcon;
+export default SmallIcon;

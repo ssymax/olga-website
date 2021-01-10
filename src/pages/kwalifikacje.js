@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import gsap from 'gsap';
 import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
 import PageHeader from 'components/atoms/PageHeader/PageHeader';
 import SpanText from 'components/atoms/SpanText/SpanText';
-import { pageTimeline } from 'utils';
+import { pageTimeline, eduPageTimeline } from 'utils';
+import { edu } from 'data';
 
 const StyledListWrapper = styled.div`
   display: grid;
@@ -66,65 +66,13 @@ const StyledSpanText = styled(SpanText)`
   }
 `;
 
-const edu = [
-  {
-    id: 1,
-    title: 'psycholog',
-    description: 'Uniwersytet Kazimierza Wielkiego w Bydgoszczy; specjalność: wspomaganie rozwoju',
-  },
-  {
-    id: 2,
-    title: 'socjoterapueta',
-    description:
-      'Krakowskie Centrum Psychodynamiczne: Dwuletnie Studium Socjoterapii i Treningu Interpersonalnego',
-  },
-  {
-    id: 3,
-    title: 'terapeuta',
-    description:
-      'w trakcie procesu certyfikacji w nurcie TSR (Brief Solution Focused Therapy): Szkoła Terapii Skoncentrowanej na Rozwiązaniach',
-  },
-  {
-    id: 4,
-    title: 'praktyk',
-    description: 'Metody Kid’s Skills – Dasz radę!',
-  },
-  {
-    id: 5,
-    title: 'absolwentka',
-    description: 'kursu Interwencja Kryzysowa w PSR',
-  },
-  { id: 6, title: 'członkini', description: 'Polskiego Towarzystwa Psychologicznego' },
-  {
-    id: 7,
-    title: 'członkini',
-    description: 'Polskiego Stowarzyszenia Terapeutów Terapii Skoncentrowanej na Rozwiązaniach',
-  },
-];
-
-const eduGridAnimation = (gridsReference) => {
-  const grids = Array.from(gridsReference.current.children);
-  const tl = gsap.timeline({ paused: true });
-  tl.fromTo(
-    grids,
-    { autoAlpha: 0, y: '-=40' },
-    {
-      duration: 1,
-      autoAlpha: 1,
-      y: 0,
-      stagger: 0.7,
-    }
-  );
-  return tl.play();
-};
-
 const EducationPage = () => {
   const headRef = useRef(null);
   const wrapRef = useRef(null);
   const gridsRef = useRef(null);
 
   useEffect(() => {
-    pageTimeline(headRef, wrapRef, eduGridAnimation(gridsRef));
+    pageTimeline(headRef, wrapRef, eduPageTimeline(gridsRef));
   }, []);
 
   return (

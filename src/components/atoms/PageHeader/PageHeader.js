@@ -3,10 +3,10 @@ import styled, { css } from 'styled-components';
 const PageHeader = styled.div`
   position: absolute;
   left: 50%;
-  transform: translate(-50%, 28%);
+  transform: translate(-50%, 30%);
   font-size: ${({ theme }) => theme.font.size.header};
   padding: 0 20px;
-  z-index: ${({ theme }) => theme.zIndex.level7};
+  z-index: ${({ theme }) => theme.zIndex.level6};
   background-color: ${({ theme }) => theme.white};
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -15,6 +15,11 @@ const PageHeader = styled.div`
     font-size: ${({ theme }) => theme.font.size.maslow};
     padding: 0 10px;
     transform: translate(-50%, 25px);
+    top: 100px;
+  }
+
+  ${({ theme }) => theme.mqx.phone} {
+    top: 60px;
   }
 
   ${({ contact }) =>

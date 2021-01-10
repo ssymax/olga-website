@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactBox from 'components/atoms/ContactBox/ContactBox';
-import ContactBoxIcon from 'components/atoms/ContactBoxIcon/ContactBoxIcon';
+import ContentBox from 'components/atoms/ContentBox/ContentBox';
+import ContentBoxIcon from 'components/atoms/ContentBoxIcon/ContentBoxIcon';
 import addressIcon from 'assets/images/svg/addressIcon.svg';
 import ContactInfo from 'components/molecules/ContactInfo/ContactInfo';
 
@@ -16,12 +16,12 @@ const StyledInnerWrapper = styled.div`
 `;
 
 const AddressContactBox = () => (
-  <ContactBox>
-    <ContactBoxIcon icon={addressIcon} />
+  <ContentBox>
+    <ContentBoxIcon icon={addressIcon} />
     <StyledInnerWrapper>
       <ContactInfo />
     </StyledInnerWrapper>
-  </ContactBox>
+  </ContentBox>
 );
 
 export default AddressContactBox;

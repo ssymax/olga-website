@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import gsap from 'gsap';
 import { MobileNavContext } from 'context';
 import { routes } from 'routes';
+import { pageTransition } from 'utils';
 
 const StyledNavWrapper = styled.nav`
   margin-right: 100px;
@@ -12,7 +13,6 @@ const StyledNavWrapper = styled.nav`
   align-content: space-around;
   justify-content: flex-start;
   margin-left: 0;
-  ${({ theme }) => theme.zIndex.level8};
 
   ${({ theme }) => theme.mqx.desktop} {
     margin-right: 60px;
@@ -22,13 +22,13 @@ const StyledNavWrapper = styled.nav`
     display: flex;
     padding-right: 20px;
     padding-top: 20px;
-    position: absolute;
+    position: fixed;
     text-align: right;
     justify-content: flex-end;
     width: 100vw;
     height: 100%;
     top: 0;
-    left: 0;
+    transform: translateX(${({ open }) => (open ? '0' : '100%')});
     background-color: ${({ theme }) => theme.white};
     box-shadow: inset 0 0 0 5px ${({ theme }) => theme.white},
       inset 0 0 0 7px ${({ theme }) => theme.borders};
@@ -72,17 +72,6 @@ const StyledLink = styled(TransitionLink)`
 const Menu = () => {
   const { isOpen, handleOpen } = useContext(MobileNavContext);
 
-  const pageTransition = ({ node, exit }) => {
-    const tl = gsap.timeline();
-    const duration = exit.length;
-    tl.fromTo(
-      node,
-      { autoAlpha: 1, scale: 1 },
-      { duration, autoAlpha: 0, scale: 0.9, transformOrigin: 'center 0' }
-    );
-    return tl.play();
-  };
-
   const menuRef = useRef(null);
 
   useEffect(() => {
@@ -98,6 +87,12 @@ const Menu = () => {
         )
         .delay(1)
     );
+
+    if (!isOpen && window.innerWidth < 767) {
+      return tl.timeScale(3);
+    }
+
+    return tl.play();
   }, []);
 
   return (

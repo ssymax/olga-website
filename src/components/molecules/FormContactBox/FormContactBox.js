@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import ContactBox from 'components/atoms/ContactBox/ContactBox';
-import ContactBoxIcon from 'components/atoms/ContactBoxIcon/ContactBoxIcon';
+import { Formik } from 'formik';
+import axios from 'axios';
+import * as Yup from 'yup';
+import ContentBox from 'components/atoms/ContentBox/ContentBox';
+import ContentBoxIcon from 'components/atoms/ContentBoxIcon/ContentBoxIcon';
 import mailIcon from 'assets/images/svg/mailIcon.svg';
 
 const StyledForm = styled.form`
-  padding: 40px 0;
+  padding: 15px 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -14,6 +17,13 @@ const StyledForm = styled.form`
   flex-direction: column;
   div {
     position: relative;
+    div {
+      font-size: 1.4rem;
+      color: ${({ theme }) => theme.white};
+      position: absolute;
+      margin-top: 1px;
+      letter-spacing: 1px;
+    }
   }
 `;
 
@@ -111,26 +121,93 @@ const StyledButton = styled.button`
   }
 `;
 
-const FormContactBox = () => (
-  <ContactBox>
-    <ContactBoxIcon icon={mailIcon} />
-    <StyledForm>
-      <div>
-        <StyledInput type="text" name="name" placeholder=" " required />
-        <StyledLabel>imię</StyledLabel>
-      </div>
-      <div>
-        <StyledInput type="email" name="email" placeholder=" " required />
-        <StyledLabel>email</StyledLabel>
-      </div>
-      <div>
-        <StyledTextArea type="text" name="message" placeholder=" " required />
-        <StyledLabel>wiadomość</StyledLabel>
-      </div>
+const StyledResponseWrapper = styled.div`
+  display: block;
+  position: absolute;
+  width: 140px;
+  height: 40px;
+  right: 18px;
+  bottom: 43px;
+`;
 
-      <StyledButton>Wyślij</StyledButton>
-    </StyledForm>
-  </ContactBox>
-);
+const SignupSchema = Yup.object().shape({
+  name: Yup.string().min(2, 'Za krótkie!').max(25, 'Za długie!').required('Wymagane :)'),
+  email: Yup.string().email('Niepoprawny email').required('Wymagane :)'),
+  message: Yup.string().min(6, 'Za mało informacji').required('Wymagane :)'),
+});
+
+const FormContactBox = () => {
+  const [response, setResponse] = useState('');
+
+  return (
+    <ContentBox>
+      <ContentBoxIcon icon={mailIcon} />
+      <Formik
+        initialValues={{ name: '', email: '', message: '' }}
+        validationSchema={SignupSchema}
+        onSubmit={(values, { setSubmitting }) => {
+          axios
+            .post('https://formspree.io/f/mdopylzq', values)
+            .then((res) => {
+              if (res) {
+                setResponse('Wysłano wiadomość!');
+              }
+              setSubmitting(false);
+            })
+            .catch((err) => {
+              if (err) {
+                setResponse('Błąd, brak połączenia.');
+              }
+            });
+        }}
+      >
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          <StyledForm onSubmit={handleSubmit}>
+            <div>
+              <StyledInput
+                type="text"
+                name="name"
+                placeholder=" "
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.name}
+              />
+              {errors.name && touched.name && <div>{errors.name}</div>}
+              <StyledLabel>imię</StyledLabel>
+            </div>
+            <div>
+              <StyledInput
+                type="email"
+                name="email"
+                placeholder=" "
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+              {errors.email && touched.email && <div>{errors.email}</div>}
+              <StyledLabel>email</StyledLabel>
+            </div>
+            <div>
+              <StyledTextArea
+                type="text"
+                name="message"
+                placeholder=" "
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.message}
+              />
+              {errors.message && touched.message && <div>{errors.message}</div>}
+              <StyledLabel>wiadomość</StyledLabel>
+            </div>
+            <StyledButton type="submit" disabled={isSubmitting}>
+              wyślij
+            </StyledButton>
+          </StyledForm>
+        )}
+      </Formik>
+      <StyledResponseWrapper>{response}</StyledResponseWrapper>
+    </ContentBox>
+  );
+};
 
 export default FormContactBox;

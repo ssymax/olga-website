@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const ContactBox = styled.div`
+const ContentBox = styled.div`
   display: flex;
   margin-top: 50px;
   width: 380px;
   height: 480px;
-  border: 2px solid ${({ theme }) => theme.white};
+  border: 2px solid ${({ theme, price }) => (price ? theme.borders : theme.white)};
   ${({ theme }) => theme.mqx.bigDesktop} {
     width: 360px;
   }
@@ -23,4 +23,4 @@ const ContactBox = styled.div`
   }
 `;
 
-export default ContactBox;
+export default ContentBox;

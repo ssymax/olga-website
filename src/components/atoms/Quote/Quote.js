@@ -1,19 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
+import { quotation } from 'data';
 
 const StyledQuotationWrapper = styled.div`
   position: absolute;
-  bottom: 25.5%;
+  bottom: 15%;
   display: grid;
   grid-template-columns: 70% 30%;
   width: 100%;
   height: auto;
   background-color: ${({ theme }) => theme.opacity};
-
-  ${({ theme }) => theme.mqx.bigDesktop} {
-    bottom: 15%;
-  }
+  z-index: inherit;
 
   ${({ theme }) => theme.mqx.bigTablet} {
     bottom: 10%;
@@ -46,7 +44,7 @@ const Quotation = styled.div`
   }
 
   ${({ theme }) => theme.mqx.bigTablet} {
-    row-gap: 10px;
+    row-gap: 5px;
   }
 
   ${({ theme }) => theme.mqx.tablet} {
@@ -76,7 +74,7 @@ const AuthorWrapper = styled.div`
     justify-self: center;
     font-size: 2rem;
     margin: 0;
-    padding: 15px 0;
+    padding: 10px 0;
     border-left: none;
     border-top: 2px solid ${({ theme }) => theme.white};
   }
@@ -85,12 +83,6 @@ const AuthorWrapper = styled.div`
     font-size: ${({ theme }) => theme.font.size.maslowSml};
   }
 `;
-
-const text = `“Nie jest normą wiedzieć, czego się chce.`;
-const text2 = `To rzadkie
-i trudne osiągnięcie...”`;
-
-const author = `a. maslow`;
 
 const Quote = () => {
   const quoteRef = useRef(null);
@@ -112,10 +104,10 @@ const Quote = () => {
   return (
     <StyledQuotationWrapper ref={quoteRef}>
       <Quotation>
-        <span>{text}</span>
-        <span>{text2}</span>
+        <span>{quotation.partOne}</span>
+        <span>{quotation.partTwo}</span>
       </Quotation>
-      <AuthorWrapper>{author.toUpperCase()}</AuthorWrapper>
+      <AuthorWrapper>{quotation.author.toUpperCase()}</AuthorWrapper>
     </StyledQuotationWrapper>
   );
 };

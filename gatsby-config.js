@@ -55,18 +55,18 @@ module.exports = {
         path: `${__dirname}/src/assets/images`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `Lorem ipsum`,
-    //     short_name: `Lorem ipsum`,
-    //     start_url: `/`,
-    //     background_color: '#FFD226',
-    //     theme_color: '#FFD226',
-    //     display: `minimal-ui`,
-    //     icon: `src/assets/images/favicon.png`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Olga Łukasik Psycholog Olsztyn`,
+        short_name: `Psycholog`,
+        start_url: `/`,
+        background_color: '#FFFFFF',
+        theme_color: '#EFC6C6',
+        display: `minimal-ui`,
+        icon: `src/assets/images/favicon.png`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
@@ -80,6 +80,7 @@ module.exports = {
         // vendors: path.join(__dirname, 'src/vendors'),
         utils: path.join(__dirname, 'src/utils'),
         context: path.join(__dirname, 'src/context'),
+        data: path.join(__dirname, 'src/data'),
         // providers: path.join(__dirname, 'src/providers'),
         // hooks: path.join(__dirname, 'src/hooks'),
         // helpers: path.join(__dirname, 'src/helpers'),

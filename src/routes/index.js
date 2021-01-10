@@ -5,5 +5,4 @@ export const routes = {
   consultations: '/konsultacje',
   priceList: '/cennik',
   contact: '/kontakt',
-  404: '/404',
 };

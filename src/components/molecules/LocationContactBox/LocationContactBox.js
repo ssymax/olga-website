@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ContactBox from 'components/atoms/ContactBox/ContactBox';
-import ContactBoxIcon from 'components/atoms/ContactBoxIcon/ContactBoxIcon';
+import ContentBox from 'components/atoms/ContentBox/ContentBox';
+import ContentBoxIcon from 'components/atoms/ContentBoxIcon/ContentBoxIcon';
 import locationIcon from 'assets/images/svg/locationIcon.svg';
 
 const StyledMapContainer = styled.div`
@@ -21,12 +21,12 @@ const StyledIframe = styled.iframe`
 `;
 
 const LocationContactBox = () => (
-  <ContactBox>
-    <ContactBoxIcon icon={locationIcon} />
+  <ContentBox>
+    <ContentBoxIcon icon={locationIcon} />
     <StyledMapContainer>
       <StyledIframe src={apiSrc} />
     </StyledMapContainer>
-  </ContactBox>
+  </ContentBox>
 );
 
 export default LocationContactBox;

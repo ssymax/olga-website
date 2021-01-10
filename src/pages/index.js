@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import gsap from 'gsap';
 import Img from 'gatsby-image';
 import Quote from 'components/atoms/Quote/Quote';
+import { mainPageTimeline } from 'utils';
 
 const StyledWrapper = styled.div`
   margin: 0 auto 40px auto;
@@ -13,12 +13,23 @@ const StyledWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   overflow-x: hidden;
+  z-index: ${({ theme }) => theme.zIndex.level6};
 `;
 
 const StyledImageWrapper = styled(Img)`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 1;
+  ${({ theme }) => theme.mqx.tablet} {
+    top: 100px;
+    margin-bottom: 100px;
+  }
+
+  ${({ theme }) => theme.mqx.phone} {
+    top: 60px;
+    margin-bottom: 60px;
+  }
 `;
 
 const IndexPage = ({ data }) => {
@@ -28,10 +39,7 @@ const IndexPage = ({ data }) => {
   const imgRef = useRef(null);
 
   useEffect(() => {
-    const img = imgRef.current;
-    const tl = gsap.timeline();
-
-    tl.fromTo(img, { autoAlpha: 0, scale: 1.05 }, { duration: 5, autoAlpha: 1, scale: 1 }).delay(1);
+    mainPageTimeline(imgRef);
   }, []);
 
   useEffect(() => {
@@ -44,9 +52,12 @@ const IndexPage = ({ data }) => {
     <>
       <StyledWrapper ref={imgRef}>
         {width < breakpoint ? (
-          <StyledImageWrapper fixed={data.file.childImageSharp.fixed} />
+          <StyledImageWrapper
+            fixed={data.file.childImageSharp.fixed}
+            alt="Olga Łukasik Psycholog"
+          />
         ) : (
-          <StyledImageWrapper fluid={data.file.childImageSharp.fluid} />
+          <StyledImageWrapper fluid={data.file.childImageSharp.fluid} alt="Olga Psycholog" />
         )}
         <Quote />
       </StyledWrapper>

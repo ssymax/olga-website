@@ -1,11 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import SpanText from 'components/atoms/SpanText/SpanText';
-import SmallContactBoxIcon from 'components/atoms/SmallContactBoxIcon/SmallContactBoxIcon';
+import SmallIcon from 'components/atoms/SmallIcon/SmallIcon';
 import homeIcon from 'assets/images/svg/homeIcon.svg';
 import phoneIcon from 'assets/images/svg/phoneIcon.svg';
 import emailIcon from 'assets/images/svg/emailIcon.svg';
-import { contactData } from 'utils';
+import { contactData } from 'data';
+
+const StyledFooter = styled.footer`
+  height: 140px;
+
+  ${({ theme }) => theme.mqx.tablet} {
+    height: 270px;
+  }
+`;
 
 const StyledFooterWrapper = styled.div`
   margin: auto;
@@ -50,10 +58,10 @@ const TheLastWrapper = styled.div`
 `;
 
 const Footer = () => (
-  <>
+  <StyledFooter>
     <StyledFooterWrapper>
       <StyledInnerWrapper>
-        <SmallContactBoxIcon icon={homeIcon} />
+        <SmallIcon icon={homeIcon} />
         <SpanText>
           {contactData.address.street}
           <br />
@@ -61,11 +69,11 @@ const Footer = () => (
         </SpanText>
       </StyledInnerWrapper>
       <StyledInnerWrapper as="a" href={contactData.phoneHref}>
-        <SmallContactBoxIcon icon={phoneIcon} />
+        <SmallIcon icon={phoneIcon} />
         <SpanText>{contactData.phone}</SpanText>
       </StyledInnerWrapper>
       <StyledInnerWrapper as="a" href={contactData.emailHref}>
-        <SmallContactBoxIcon icon={emailIcon} />
+        <SmallIcon icon={emailIcon} />
         <SpanText>{contactData.email}</SpanText>
       </StyledInnerWrapper>
     </StyledFooterWrapper>
@@ -74,7 +82,7 @@ const Footer = () => (
         &copy; {new Date().getFullYear()} {contactData.name}
       </StyledSpanText>
     </TheLastWrapper>
-  </>
+  </StyledFooter>
 );
 
 export default Footer;
