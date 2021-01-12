@@ -122,12 +122,16 @@ const StyledButton = styled.button`
 `;
 
 const StyledResponseWrapper = styled.div`
-  display: block;
+  display: flex;
+  padding-left: 3px;
+  justify-content: start;
+  align-items: center;
   position: absolute;
   width: 140px;
   height: 40px;
   right: 18px;
   bottom: 43px;
+  letter-spacing: 2px;
 `;
 
 const SignupSchema = Yup.object().shape({
@@ -138,6 +142,7 @@ const SignupSchema = Yup.object().shape({
 
 const FormContactBox = () => {
   const [response, setResponse] = useState('');
+  const url = `https://formspree.io/f/${process.env.FORMSPREE_ID}`;
 
   return (
     <ContentBox>
@@ -147,7 +152,7 @@ const FormContactBox = () => {
         validationSchema={SignupSchema}
         onSubmit={(values, { setSubmitting }) => {
           axios
-            .post('https://formspree.io/f/mdopylzq', values)
+            .post(url, values)
             .then((res) => {
               if (res) {
                 setResponse('Wysłano wiadomość!');

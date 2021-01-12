@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import gsap from 'gsap';
 import Logo from 'components/atoms/Logo/Logo';
 import Menu from 'components/molecules/Menu/Menu';
 import Burger from 'components/atoms/Burger/Burger';
+import { MobileNavContext } from 'context';
 
 const StyledWrapper = styled.header`
   margin: auto;
@@ -39,6 +40,10 @@ const StyledWrapper = styled.header`
 `;
 
 const Navigation = () => {
+  // mobile nav visibility state
+  const [isOpen, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!isOpen);
+
   const navRef = useRef(null);
 
   const location = window.location.pathname;
@@ -50,7 +55,7 @@ const Navigation = () => {
   }, []);
 
   return (
-    <>
+    <MobileNavContext.Provider value={{ isOpen, handleOpen }}>
       {location === '/' ? (
         <StyledWrapper index ref={navRef}>
           <Logo />
@@ -64,7 +69,7 @@ const Navigation = () => {
           <Menu />
         </StyledWrapper>
       )}
-    </>
+    </MobileNavContext.Provider>
   );
 };
 

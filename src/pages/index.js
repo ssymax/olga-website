@@ -42,6 +42,8 @@ const IndexPage = ({ data }) => {
     mainPageTimeline(imgRef);
   }, []);
 
+  // resize image depends of screen width,
+
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -57,7 +59,10 @@ const IndexPage = ({ data }) => {
             alt="Olga Łukasik Psycholog"
           />
         ) : (
-          <StyledImageWrapper fluid={data.file.childImageSharp.fluid} alt="Olga Psycholog" />
+          <StyledImageWrapper
+            fluid={data.file.childImageSharp.fluid}
+            alt="Olga Łukasik Psycholog"
+          />
         )}
         <Quote />
       </StyledWrapper>

@@ -1,13 +1,13 @@
 export const contactData = {
   name: 'Olga Łukasik',
   phoneHref: 'tel:+48508200455',
-  emailHref: 'mailto:olga.lukasikk@gmail.com',
+  emailHref: 'mailto:olgalukasikk@gmail.com',
   address: {
     street: 'ul. Michała Kajki 5, pokój 16',
     city: '11-041 Olsztyn',
   },
   phone: '508-200-455',
-  email: 'olga.lukasikk@gmail.com',
+  email: 'olgalukasikk@gmail.com',
 };
 
 export const quotation = {
@@ -21,18 +21,17 @@ export const aboutMe = {
   part1: `Od blisko 10 lat pracuję z młodzieżą i ich rodzinami – w kierunku wzmacniania więzi
   rodzinnych oraz nabywania przez młode osoby nowych umiejętności, które umożliwią im
   lepsze radzenie sobie z przeżywanymi trudnościami.`,
-  part2: `Prowadzę również poradnictwo
+  part2: `Prowadzę poradnictwo
   psychologiczne oraz terapię osób dorosłych.`,
-  part3: `Zachęcam wszystkich klientów do przyjmowania
-  postawy uważności na siebie, na własne potrzeby i emocje do praktykowania troski wobec
-  samego siebie, jako niezbędnego elementu równowagi psychicznej.`,
-  part4: `Towarzyszę swoim
-  klientom procesie zmiany i osiągania celów terapeutycznych i osobistych. Podejmuję
+  part3: `Podejmuję
   działania na rzecz promocji zdrowia psychicznego i rozwoju osobistego.`,
-  part5: `Prowadzę
+  part4: `Prowadzę
   autorskie warsztaty budowania kobiecej mocy, warsztaty kompetencji społecznych dla
   różnych grup docelowych, zajęcia socjoterapeutyczne dla młodzieży oraz grupy wsparcia
   dla osób dorosłych.`,
+  part5: `Zachęcam klientów do przyjmowania
+  postawy uważności na siebie, na własne potrzeby i emocje, do praktykowania troski wobec
+  samego siebie.`,
 };
 
 export const edu = [
@@ -60,13 +59,13 @@ export const edu = [
   },
   {
     id: 5,
-    title: 'absolwentka',
+    title: 'absolwent',
     description: 'kursu Interwencja Kryzysowa w PSR',
   },
-  { id: 6, title: 'członkini', description: 'Polskiego Towarzystwa Psychologicznego' },
+  { id: 6, title: 'członek', description: 'Polskiego Towarzystwa Psychologicznego' },
   {
     id: 7,
-    title: 'członkini',
+    title: 'członek',
     description: 'Polskiego Stowarzyszenia Terapeutów Terapii Skoncentrowanej na Rozwiązaniach',
   },
 ];
@@ -77,7 +76,7 @@ export const consultation = [
     textPartOne: 'Na pierwsze spotkanie umówisz się dzwoniąc pod numer telefonu',
     importantOne: '508 200 455',
     textPartTwo: ' albo wypełniając',
-    importantTwo: 'formularz zgłoszeniowy',
+    importantTwo: 'formularz zgłoszeniowy.',
   },
   {
     id: 2,
@@ -139,3 +138,11 @@ export const consultation = [
     importantTwo: 'swojego życia i o swoich przeżyciach.',
   },
 ];
+
+export const pricesData = {
+  priceOne: '100zl',
+  priceTwo: '120zl',
+  boxOne: 'Konsultacja / terapia indywidualna',
+  boxTwo: 'Terapia rodzinna',
+  boxThree: 'Konsultacja online',
+};

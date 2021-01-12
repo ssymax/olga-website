@@ -12,13 +12,13 @@ const StyledMapContainer = styled.div`
   align-items: center;
 `;
 
-const apiSrc = `https://www.google.com/maps/embed/v1/place?q=place_id:ChIJo1evRs1-4kYRqelB419b-xQ&key=${process.env.GOOGLE_MAPS_STATIC_API_KEY}`;
-
 const StyledIframe = styled.iframe`
   width: 290px;
   height: 400px;
   border: 2px solid ${({ theme }) => theme.black};
 `;
+
+const apiSrc = `https://www.google.com/maps/embed/v1/place?q=place_id:ChIJo1evRs1-4kYRqelB419b-xQ&key=${process.env.GOOGLE_MAPS_STATIC_API_KEY}`;
 
 const LocationContactBox = () => (
   <ContentBox>

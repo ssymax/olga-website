@@ -44,6 +44,10 @@ const StyledLinkList = styled.ul`
   flex-direction: column;
   justify-content: space-evenly;
   z-index: inherit;
+  ${({ theme }) => theme.mqx.tablet} {
+    padding-right: 20px;
+    margin-top: 40px;
+  }
 `;
 
 const StyledItem = styled.li`
@@ -57,43 +61,57 @@ const StyledItem = styled.li`
 const StyledLink = styled(TransitionLink)`
   display: block;
   text-decoration: none;
-  color: ${({ theme }) => theme.primary};
-  transition: color 1.2s ease-in-out;
+  color: ${({ theme }) => theme.black};
+  transition: color 0.6s ease-in-out;
   z-index: inherit;
   &.active {
-    color: ${({ theme }) => theme.black};
+    color: ${({ theme }) => theme.primary};
   }
   &:hover {
-    color: ${({ theme }) => theme.black};
-    transition: color 0.2s ease-in-out;
+    color: ${({ theme }) => theme.primary};
+    transition: color 0.1s ease-in;
   }
 `;
 
 const Menu = () => {
   const { isOpen, handleOpen } = useContext(MobileNavContext);
-
   const menuRef = useRef(null);
 
+  const desktop = window.matchMedia('(min-width: 768px)');
+  const mobile = window.matchMedia('(max-width: 767px)');
+  const tlDesktop = gsap.timeline();
+  const tiMobile = gsap.timeline();
+
   useEffect(() => {
-    const menu = Array.from(menuRef.current.children);
+    const menu = menuRef.current.children;
 
-    const tl = gsap.timeline();
-    menu.forEach((menuItem) =>
-      tl
+    if (desktop.matches) {
+      tlDesktop
         .fromTo(
-          menuItem,
+          menu,
           { scale: 0.001 },
-          { duration: 1, scale: 1, transformOrigin: 'left 100%', ease: 'Expo.easeOut' }
+          {
+            scale: 1,
+            transformOrigin: 'left 100%',
+            ease: 'Expo.easeOut',
+            stagger: 1,
+          }
         )
-        .delay(1)
-    );
-
-    if (!isOpen && window.innerWidth < 767) {
-      return tl.timeScale(3);
+        .delay(1);
     }
-
-    return tl.play();
   }, []);
+
+  useEffect(() => {
+    const menu = menuRef.current;
+    if (mobile.matches && isOpen) {
+      tlDesktop.kill();
+      tiMobile.fromTo(
+        menu,
+        { autoAlpha: 0, x: '-=50' },
+        { autoAlpha: 1, x: '0', ease: 'Power3.easeOut' }
+      );
+    }
+  }, [isOpen]);
 
   return (
     <StyledNavWrapper open={isOpen}>

@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Helmet from 'react-helmet';
+import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import Navigation from 'components/organisms/Navigation/Navigation';
 import Footer from 'components/organisms/Footer/Footer';
-import { MobileNavContext } from 'context';
 
 const MainTemplate = ({ children }) => {
-  // mobile nav visibility state
-  const [isOpen, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!isOpen);
-
   return (
     <>
       <Helmet lang="pl">
@@ -30,16 +26,19 @@ const MainTemplate = ({ children }) => {
           rel="stylesheet"
         />
       </Helmet>
-      <MobileNavContext.Provider value={{ isOpen, handleOpen }}>
-        <GlobalStyle />
-        <ThemeProvider theme={theme}>
-          <Navigation />
-          {children}
-          <Footer />
-        </ThemeProvider>
-      </MobileNavContext.Provider>
+
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Navigation />
+        {children}
+        <Footer />
+      </ThemeProvider>
     </>
   );
 };
 
 export default MainTemplate;
+
+MainTemplate.propTypes = {
+  children: PropTypes.element.isRequired,
+};
