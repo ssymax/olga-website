@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
@@ -6,11 +6,22 @@ import GlobalStyle from 'assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import Navigation from 'components/organisms/Navigation/Navigation';
 import Footer from 'components/organisms/Footer/Footer';
+import Loading from 'components/atoms/Loading/Loading';
 
 const MainTemplate = ({ children }) => {
+  // loading state
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
+
   return (
     <>
-      <Helmet lang="pl">
+      <Helmet>
+        <html lang="pl" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <meta
@@ -29,9 +40,15 @@ const MainTemplate = ({ children }) => {
 
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Navigation />
-        {children}
-        <Footer />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <Navigation />
+            {children}
+            <Footer />
+          </>
+        )}
       </ThemeProvider>
     </>
   );

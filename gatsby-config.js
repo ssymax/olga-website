@@ -8,10 +8,13 @@ module.exports = {
   siteMetadata: {
     title: `Olga Łukasik Psycholog`,
     author: `Szymon Łukasik`,
+    siteUrl: 'https://www.olgalukasik.pl',
   },
   flags: { PRESERVE_WEBPACK_CACHE: true, FAST_REFRESH: true, FAST_DEV: false },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     'gatsby-plugin-svgr',
@@ -67,6 +70,7 @@ module.exports = {
         icon: `src/assets/images/favicon.png`,
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: 'gatsby-plugin-root-import',
       options: {

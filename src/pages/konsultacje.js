@@ -30,7 +30,7 @@ const StyledInfoWrapper = styled.div`
   }
 `;
 
-const StyledId = styled.h1`
+const StyledId = styled.h2`
   display: flex;
   justify-content: center;
   align-items: center;

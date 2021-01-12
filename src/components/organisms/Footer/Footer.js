@@ -7,14 +7,6 @@ import phoneIcon from 'assets/images/svg/phoneIcon.svg';
 import emailIcon from 'assets/images/svg/emailIcon.svg';
 import { contactData } from 'data';
 
-const StyledFooter = styled.footer`
-  height: 140px;
-
-  ${({ theme }) => theme.mqx.tablet} {
-    height: 270px;
-  }
-`;
-
 const StyledFooterWrapper = styled.div`
   margin: auto;
   max-width: 100%;
@@ -57,32 +49,36 @@ const TheLastWrapper = styled.div`
   text-align: center;
 `;
 
-const Footer = () => (
-  <StyledFooter>
-    <StyledFooterWrapper>
-      <StyledInnerWrapper>
-        <SmallIcon icon={homeIcon} />
-        <SpanText>
-          {contactData.address.street}
-          <br />
-          {contactData.address.city}
-        </SpanText>
-      </StyledInnerWrapper>
-      <StyledInnerWrapper as="a" href={contactData.phoneHref}>
-        <SmallIcon icon={phoneIcon} />
-        <SpanText>{contactData.phone}</SpanText>
-      </StyledInnerWrapper>
-      <StyledInnerWrapper as="a" href={contactData.emailHref}>
-        <SmallIcon icon={emailIcon} />
-        <SpanText>{contactData.email}</SpanText>
-      </StyledInnerWrapper>
-    </StyledFooterWrapper>
-    <TheLastWrapper>
-      <StyledSpanText>
-        &copy; {new Date().getFullYear()} {contactData.name}
-      </StyledSpanText>
-    </TheLastWrapper>
-  </StyledFooter>
-);
+const Footer = () => {
+  return (
+    <>
+      <StyledFooterWrapper>
+        <StyledInnerWrapper>
+          <SmallIcon icon={homeIcon} />
+          <SpanText>
+            {contactData.address.street}
+            <br />
+            {contactData.address.city}
+          </SpanText>
+        </StyledInnerWrapper>
+
+        <StyledInnerWrapper as="a" href={contactData.phoneHref}>
+          <SmallIcon icon={phoneIcon} />
+          <SpanText>{contactData.phone}</SpanText>
+        </StyledInnerWrapper>
+
+        <StyledInnerWrapper as="a" href={contactData.emailHref}>
+          <SmallIcon icon={emailIcon} />
+          <SpanText>{contactData.email}</SpanText>
+        </StyledInnerWrapper>
+      </StyledFooterWrapper>
+      <TheLastWrapper>
+        <StyledSpanText>
+          &copy; {new Date().getFullYear()} {contactData.name}
+        </StyledSpanText>
+      </TheLastWrapper>
+    </>
+  );
+};
 
 export default Footer;

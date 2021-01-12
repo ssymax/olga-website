@@ -140,8 +140,8 @@ export const consultation = [
 ];
 
 export const pricesData = {
-  priceOne: '100zl',
-  priceTwo: '120zl',
+  priceOne: '100zł',
+  priceTwo: '120zł',
   boxOne: 'Konsultacja / terapia indywidualna',
   boxTwo: 'Terapia rodzinna',
   boxThree: 'Konsultacja online',

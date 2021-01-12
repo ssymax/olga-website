@@ -77,14 +77,12 @@ const Menu = () => {
   const { isOpen, handleOpen } = useContext(MobileNavContext);
   const menuRef = useRef(null);
 
-  const desktop = window.matchMedia('(min-width: 768px)');
-  const mobile = window.matchMedia('(max-width: 767px)');
   const tlDesktop = gsap.timeline();
   const tiMobile = gsap.timeline();
 
   useEffect(() => {
     const menu = menuRef.current.children;
-
+    const desktop = window.matchMedia('(min-width: 768px)');
     if (desktop.matches) {
       tlDesktop
         .fromTo(
@@ -103,6 +101,7 @@ const Menu = () => {
 
   useEffect(() => {
     const menu = menuRef.current;
+    const mobile = window.matchMedia('(max-width: 767px)');
     if (mobile.matches && isOpen) {
       tlDesktop.kill();
       tiMobile.fromTo(

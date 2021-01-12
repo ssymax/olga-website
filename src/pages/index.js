@@ -33,9 +33,6 @@ const StyledImageWrapper = styled(Img)`
 `;
 
 const IndexPage = ({ data }) => {
-  const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 767;
-
   const imgRef = useRef(null);
 
   useEffect(() => {
@@ -43,6 +40,10 @@ const IndexPage = ({ data }) => {
   }, []);
 
   // resize image depends of screen width,
+  const [width, setWidth] = useState(0);
+  const breakpoint = 767;
+
+  useEffect(() => setWidth(window.innerWidth));
 
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);

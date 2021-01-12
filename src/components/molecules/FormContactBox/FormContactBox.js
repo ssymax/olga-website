@@ -137,7 +137,7 @@ const StyledResponseWrapper = styled.div`
 const SignupSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Za krótkie!').max(25, 'Za długie!').required('Wymagane :)'),
   email: Yup.string().email('Niepoprawny email').required('Wymagane :)'),
-  message: Yup.string().min(6, 'Za mało informacji').required('Wymagane :)'),
+  message: Yup.string().min(15, 'Za mało informacji').required('Wymagane :)'),
 });
 
 const FormContactBox = () => {

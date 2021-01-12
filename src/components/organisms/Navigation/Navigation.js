@@ -43,10 +43,12 @@ const Navigation = () => {
   // mobile nav visibility state
   const [isOpen, setOpen] = useState(false);
   const handleOpen = () => setOpen(!isOpen);
+  // route state
+  const [route, setRoute] = useState('');
+
+  useEffect(() => setRoute(window.location.pathname));
 
   const navRef = useRef(null);
-
-  const location = window.location.pathname;
 
   useEffect(() => {
     const nav = navRef.current;
@@ -56,7 +58,7 @@ const Navigation = () => {
 
   return (
     <MobileNavContext.Provider value={{ isOpen, handleOpen }}>
-      {location === '/' ? (
+      {route === '/' ? (
         <StyledWrapper index ref={navRef}>
           <Logo />
           <Burger />
