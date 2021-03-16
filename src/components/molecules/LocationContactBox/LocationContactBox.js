@@ -18,7 +18,7 @@ const StyledIframe = styled.iframe`
   border: 2px solid ${({ theme }) => theme.black};
 `;
 
-const apiSrc = `https://www.google.com/maps/embed/v1/place?q=place_id:ChIJo1evRs1-4kYRqelB419b-xQ&key=${process.env.GOOGLE_MAPS_STATIC_API_KEY}`;
+const apiSrc = `https://www.google.com/maps/embed/v1/place?q=place_id:ChIJo1evRs1-4kYRqelB419b-xQ&key=${process.env.GATSBY_GOOGLE_MAPS_STATIC_API_KEY}`;
 
 const LocationContactBox = () => (
   <ContentBox>

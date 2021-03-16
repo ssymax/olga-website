@@ -4,7 +4,7 @@ import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
 import PageHeader from 'components/atoms/PageHeader/PageHeader';
 import SpanText from 'components/atoms/SpanText/SpanText';
 import { pageTimeline, consultationTimeline } from 'utils';
-import { consultation } from 'data';
+import { graphql } from 'gatsby';
 
 const StyledInnerWrapper = styled.div`
   margin-top: 30px;
@@ -78,7 +78,7 @@ const StyledBackgroundSpan = styled(SpanText)`
   }
 `;
 
-const ConsultationPage = () => {
+const ConsultationPage = ({ data }) => {
   const headRef = useRef(null);
   const wrapperRef = useRef(null);
   const infoWrapRef = useRef(null);
@@ -103,30 +103,42 @@ const ConsultationPage = () => {
     }
   };
 
+  const parsedConultations = JSON.parse(data.datoCmsConsult.consultations);
+
   return (
     <>
       <PageHeader ref={headRef}>konsultacje</PageHeader>
       <PageWrapper ref={wrapperRef}>
         <StyledInnerWrapper ref={infoWrapRef}>
-          {consultation.map(({ id, textPartOne, textPartTwo, importantOne, importantTwo }) => (
-            <StyledInfoWrapper key={id}>
-              <StyledId>{id}</StyledId>
-              <StyledSpanText>{textPartOne}</StyledSpanText>
-              <StyledBackgroundSpan>
-                <div ref={addFirstRefs} />
-                {importantOne}
-              </StyledBackgroundSpan>
-              <StyledSpanText>{textPartTwo}</StyledSpanText>
-              <StyledBackgroundSpan>
-                <div ref={addSecondRefs} />
-                {importantTwo}
-              </StyledBackgroundSpan>
-            </StyledInfoWrapper>
-          ))}
+          {parsedConultations.map(
+            ({ id, textPartOne, textPartTwo, importantOne, importantTwo }) => (
+              <StyledInfoWrapper key={id}>
+                <StyledId>{id}</StyledId>
+                <StyledSpanText>{textPartOne}</StyledSpanText>
+                <StyledBackgroundSpan>
+                  <div ref={addFirstRefs} />
+                  {importantOne}
+                </StyledBackgroundSpan>
+                <StyledSpanText>{textPartTwo}</StyledSpanText>
+                <StyledBackgroundSpan>
+                  <div ref={addSecondRefs} />
+                  {importantTwo}
+                </StyledBackgroundSpan>
+              </StyledInfoWrapper>
+            )
+          )}
         </StyledInnerWrapper>
       </PageWrapper>
     </>
   );
 };
+
+export const query = graphql`
+  {
+    datoCmsConsult {
+      consultations
+    }
+  }
+`;
 
 export default ConsultationPage;

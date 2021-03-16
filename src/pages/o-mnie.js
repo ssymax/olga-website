@@ -4,7 +4,7 @@ import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
 import PageHeader from 'components/atoms/PageHeader/PageHeader';
 import SpanText from 'components/atoms/SpanText/SpanText';
 import { pageTimeline, aboutPageTimeline } from 'utils';
-import { aboutMe } from 'data';
+import { graphql } from 'gatsby';
 
 const StyledPageWrapper = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const Divider = styled.hr`
   padding: 0px;
 `;
 
-const AboutMePage = () => {
+const AboutMePage = ({ data }) => {
   const headRef = useRef(null);
   const wrapperRef = useRef(null);
   const contentRef = useRef(null);
@@ -50,24 +50,38 @@ const AboutMePage = () => {
     pageTimeline(headRef, wrapperRef, aboutPageTimeline(contentRef));
   }, []);
 
+  const { datoCmsAbout } = data;
+
   return (
     <>
       <PageHeader ref={headRef}>o mnie</PageHeader>
       <PageWrapper ref={wrapperRef}>
         <StyledPageWrapper ref={contentRef}>
-          <StyledSpanText primary>{aboutMe.part1}</StyledSpanText>
+          <StyledSpanText primary>{datoCmsAbout.part1}</StyledSpanText>
           <Divider />
-          <StyledSpanText>{aboutMe.part2}</StyledSpanText>
+          <StyledSpanText>{datoCmsAbout.part2}</StyledSpanText>
           <Divider />
-          <StyledSpanText primary>{aboutMe.part3}</StyledSpanText>
+          <StyledSpanText primary>{datoCmsAbout.part3}</StyledSpanText>
           <Divider />
-          <StyledSpanText>{aboutMe.part4}</StyledSpanText>
+          <StyledSpanText>{datoCmsAbout.part4}</StyledSpanText>
           <Divider />
-          <StyledSpanText primary>{aboutMe.part5}</StyledSpanText>
+          <StyledSpanText primary>{datoCmsAbout.part5}</StyledSpanText>
         </StyledPageWrapper>
       </PageWrapper>
     </>
   );
 };
+
+export const query = graphql`
+  {
+    datoCmsAbout {
+      part1
+      part2
+      part3
+      part4
+      part5
+    }
+  }
+`;
 
 export default AboutMePage;

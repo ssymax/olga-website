@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
 import PageWrapper from 'components/molecules/PageWrapper/PageWrapper';
 import PageHeader from 'components/atoms/PageHeader/PageHeader';
 import SpanText from 'components/atoms/SpanText/SpanText';
 import { pageTimeline, eduPageTimeline } from 'utils';
-import { edu } from 'data';
 
 const StyledListWrapper = styled.div`
   display: grid;
@@ -66,7 +66,7 @@ const StyledSpanText = styled(SpanText)`
   }
 `;
 
-const EducationPage = () => {
+const EducationPage = ({ data }) => {
   const headRef = useRef(null);
   const wrapRef = useRef(null);
   const gridsRef = useRef(null);
@@ -75,12 +75,14 @@ const EducationPage = () => {
     pageTimeline(headRef, wrapRef, eduPageTimeline(gridsRef));
   }, []);
 
+  const parsedEducation = JSON.parse(data.datoCmsEducation.education);
+
   return (
     <>
       <PageHeader ref={headRef}>kwalifikacje</PageHeader>
       <PageWrapper ref={wrapRef}>
         <StyledListWrapper ref={gridsRef}>
-          {edu.map((item) => (
+          {parsedEducation.map((item) => (
             <div key={item.id}>
               <StyledInnerHeader>{item.title}</StyledInnerHeader>
               <StyledSpanText>{item.description}</StyledSpanText>
@@ -91,5 +93,13 @@ const EducationPage = () => {
     </>
   );
 };
+
+export const query = graphql`
+  {
+    datoCmsEducation {
+      education
+    }
+  }
+`;
 
 export default EducationPage;

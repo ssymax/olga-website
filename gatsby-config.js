@@ -10,6 +10,7 @@ module.exports = {
     author: `Szymon Łukasik`,
     siteUrl: 'https://www.olgalukasik.pl',
   },
+
   flags: { PRESERVE_WEBPACK_CACHE: true, FAST_REFRESH: true, FAST_DEV: false },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -28,6 +29,14 @@ module.exports = {
       resolve: 'gatsby-plugin-transition-link',
       options: {
         layout: require.resolve('./src/components/templates/MainTemplate/MainTemplate.js'),
+      },
+    },
+    {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: `${process.env.GATSBY_DATO_CMS_KEY}`,
+        preview: false,
+        disableLiveReload: false,
       },
     },
     {

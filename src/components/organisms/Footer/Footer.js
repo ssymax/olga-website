@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
 import SpanText from 'components/atoms/SpanText/SpanText';
 import SmallIcon from 'components/atoms/SmallIcon/SmallIcon';
 import homeIcon from 'assets/images/svg/homeIcon.svg';
 import phoneIcon from 'assets/images/svg/phoneIcon.svg';
 import emailIcon from 'assets/images/svg/emailIcon.svg';
-import { contactData } from 'data';
 
 const StyledFooterWrapper = styled.div`
   margin: auto;
@@ -50,31 +50,47 @@ const TheLastWrapper = styled.div`
 `;
 
 const Footer = () => {
+  const data = useStaticQuery(graphql`
+    {
+      datoCmsContact {
+        street
+        city
+        phonehref
+        phone
+        emailhref
+        email
+        name
+      }
+    }
+  `);
+
+  const { street, city, phoneHref, phone, emailHref, email, name } = data.datoCmsContact;
+
   return (
     <>
       <StyledFooterWrapper>
         <StyledInnerWrapper>
           <SmallIcon icon={homeIcon} />
           <SpanText>
-            {contactData.address.street}
+            {street}
             <br />
-            {contactData.address.city}
+            {city}
           </SpanText>
         </StyledInnerWrapper>
 
-        <StyledInnerWrapper as="a" href={contactData.phoneHref}>
+        <StyledInnerWrapper as="a" href={phoneHref}>
           <SmallIcon icon={phoneIcon} />
-          <SpanText>{contactData.phone}</SpanText>
+          <SpanText>{phone}</SpanText>
         </StyledInnerWrapper>
 
-        <StyledInnerWrapper as="a" href={contactData.emailHref}>
+        <StyledInnerWrapper as="a" href={emailHref}>
           <SmallIcon icon={emailIcon} />
-          <SpanText>{contactData.email}</SpanText>
+          <SpanText>{email}</SpanText>
         </StyledInnerWrapper>
       </StyledFooterWrapper>
       <TheLastWrapper>
         <StyledSpanText>
-          &copy; {new Date().getFullYear()} {contactData.name}
+          &copy; {new Date().getFullYear()} {name}
         </StyledSpanText>
       </TheLastWrapper>
     </>

@@ -142,7 +142,7 @@ const SignupSchema = Yup.object().shape({
 
 const FormContactBox = () => {
   const [response, setResponse] = useState('');
-  const url = `https://formspree.io/f/${process.env.FORMSPREE_ID}`;
+  const url = `https://formspree.io/f/${process.env.GATSBY_FORMSPREE_ID}`;
 
   return (
     <ContentBox>
