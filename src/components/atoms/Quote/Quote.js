@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
-import { quotation } from 'data';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const StyledQuotationWrapper = styled.div`
   position: absolute;
@@ -101,13 +101,25 @@ const Quote = () => {
       .delay(1);
   }, []);
 
+  const data = useStaticQuery(graphql`
+    {
+      datoCmsQuote {
+        partone
+        parttwo
+        author
+      }
+    }
+  `);
+
+  const { partone, parttwo, author } = data.datoCmsQuote;
+
   return (
     <StyledQuotationWrapper ref={quoteRef}>
       <Quotation>
-        <span>{quotation.partOne}</span>
-        <span>{quotation.partTwo}</span>
+        <span>{partone}</span>
+        <span>{parttwo}</span>
       </Quotation>
-      <AuthorWrapper>{quotation.author.toUpperCase()}</AuthorWrapper>
+      <AuthorWrapper>{author.toUpperCase()}</AuthorWrapper>
     </StyledQuotationWrapper>
   );
 };
