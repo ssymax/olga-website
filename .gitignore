@@ -57,6 +57,8 @@ typings/
 # gatsby files
 .cache/
 public
+.env.development
+.env.production
 
 # Mac files
 .DS_Store
@@ -67,5 +69,3 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
-.env.development
-.env.production
